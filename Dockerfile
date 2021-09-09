@@ -8,4 +8,4 @@ RUN git clone https://github.com/SBSstudio/quicktelegraph_bot
 RUN cd quicktelegraph_bot
 WORKDIR /quicktelegraph_bot
 RUN pip3 install -U -r requirements.txt
-CMD python3 main.py
+CMD python3 quicktelegraph_bot.py
