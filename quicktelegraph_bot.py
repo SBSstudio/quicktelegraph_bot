@@ -15,7 +15,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
-TOKEN = 'YOUR_TOKEN'
+TOKEN = '1927945502:AAEziSf-GEPro-soLqjy-gaSETnQZeywPlU'
 REQUEST_KWARGS = {
     'proxy_url': 'http://127.0.0.1:1087/',
 }
@@ -39,7 +39,7 @@ def send_to_telegra(title, content):
     access_token = create_telegra_accesstoken()
     params = {
         'access_token': access_token,
-        'author_name': 'Anonymous',
+        'author_name': 'Telegraph Uploader Bot',
         'title': title,
         'content': '[{"tag":"p","children":[%s]}]' % json.dumps(content, ensure_ascii=False),
         'return_content': 'false'
@@ -50,15 +50,15 @@ def send_to_telegra(title, content):
         return result['result']['url']
 
 
-def start(update, context):
-    update.message.reply_text("What's the title?")
+def new(update, context):
+    update.message.reply_text("Enter title")
     return TITLE
 
 
 def title(update, context):
     title = update.message.text
     context.user_data['title'] = title
-    update.message.reply_text("Send the Content.")
+    update.message.reply_text("Enter Content.")
     return CONTENT
 
 
@@ -67,13 +67,13 @@ def content(update, context):
     content = update.message.text
     url = send_to_telegra(title, content)
     update.message.reply_text(url)
-    update.message.reply_text('Done, donate to me: https://www.paypal.com/paypalme/asahi001')
+    update.message.reply_text('Thank You for using me. . .')
     logger.info("Done.")
     return ConversationHandler.END
 
 
 def help(update, context):
-    update.message.reply_text("It all starts /start.")
+    update.message.reply_text("It all starts /new.")
 
 
 def cancel(update, context):
@@ -98,7 +98,7 @@ def main():
     dp = updater.dispatcher
 
     conv_handler = ConversationHandler(
-        entry_points=[CommandHandler('start', start)],
+        entry_points=[CommandHandler('new', new)],
 
         states={
             TITLE: [CommandHandler('cancel', cancel), MessageHandler(Filters.text, title)],
