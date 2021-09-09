@@ -67,13 +67,13 @@ def content(update, context):
     content = update.message.text
     url = send_to_telegra(title, content)
     update.message.reply_text(url)
-    update.message.reply_text('Thank You for using me. . .')
+    update.message.reply_text('Thank You for using me ❤️ \n\nJoin Update Channel:- @SBS_Studio')
     logger.info("Done.")
     return ConversationHandler.END
 
 
-def help(update, context):
-    update.message.reply_text("It all starts /new.")
+def start(update, context):
+    update.message.reply_text("Hello Friend! I'm Telegraph Uploader Bot. \n\nI can upload text to telegra.ph. \n\nClick /new command to upload telegra.ph. \n\n@TGtelegraphuploaderbot|@SBS_Studio ")
 
 
 def cancel(update, context):
@@ -111,7 +111,7 @@ def main():
         fallbacks=[CommandHandler('cancel', cancel)]
     )
     dp.add_handler(conv_handler)
-    dp.add_handler(CommandHandler("help", help))
+    dp.add_handler(CommandHandler("start", start))
     dp.add_error_handler(error)
 
     updater.start_polling()
