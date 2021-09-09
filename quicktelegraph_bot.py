@@ -73,7 +73,7 @@ def content(update, context):
 
 
 def start(update, context):
-    update.message.reply_text("**Hello Friend! I'm Telegraph Uploader Bot.** \n\nI can upload text to telegra.ph. Click /new command to upload telegra.ph. \n\n@TGtelegraphuploaderbot|@SBS_Studio ")
+    update.message.reply_text("𝙃𝙚𝙡𝙡𝙤 𝙁𝙧𝙞𝙚𝙣𝙙! ɪ'ᴍ ᴛᴇʟᴇɢʀᴀᴘʜ ᴜᴘʟᴏᴀᴅᴇʀ ʙᴏᴛ. \n\nI can upload text to telegra.ph. Click /new command to upload telegra.ph. \n\n@TGtelegraphuploaderbot|@SBS_Studio ")
 
 
 def cancel(update, context):
