@@ -71,10 +71,34 @@ def content(update, context):
     logger.info("Done.")
     return ConversationHandler.END
 
+def staat(qq):
+  url = "https://api.telegram.org/bot"+TOKEN+"/sendphoto"
+  data = {
+    "chat_id": str(qq),
+    "photo": "https://telegra.ph/file/3f81561e07a2fcaadbf26.jpg",
+    "caption": "Get instant access to Corona in Sri Lanka 📊 .  Automatically retrieve the latest corona information after adding it to the @SLCovid19slbzonebot Group 🦠 . Use /help for more information. @sl_bot_zone ",
+    "parse_mode": "HTML",
+    "reply_markup": {
+        "inline_keyboard": [
+            [
+                {
+                    "text": " 💎 Youtube  ",
+                    "url": "https://www.youtube.com/channel/UCvYfJcTr8RY72dIapzMqFQA"
+                }, 
+                {
+                    "text": " 🔔 ",
+                    "callback_data": "/help"
+                }
+            ]
+        ]
+    }
+}
+  headers = {'Content-type': 'application/json'}
+  r = requests.post(url, callback_data, data=json.dumps(data), headers=headers)
 
-def start(update, context):
-    update.message.reply_text("𝙃𝙚𝙡𝙡𝙤 𝙁𝙧𝙞𝙚𝙣𝙙! ɪ'ᴍ ᴛᴇʟᴇɢʀᴀᴘʜ ᴜᴘʟᴏᴀᴅᴇʀ ʙᴏᴛ. \n\nI can upload text to telegra.ph. Click /new command to upload telegra.ph. \n\n@TGtelegraphuploaderbot|@SBS_Studio ")
-
+def start(event):
+    staat(event.original_update.message.peer_id.user_id)
+    raise events.StopPropagation
 
 def cancel(update, context):
     logger.info("canceled the conversation.")
