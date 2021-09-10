@@ -102,8 +102,8 @@ def main():
             TITLE: [CommandHandler('cancel', cancel), MessageHandler(Filters.text, title)],
             CONTENT: [CommandHandler('cancel', cancel), MessageHandler(Filters.text, content)],
 
-            PHOTO: [MessageHandler(Filters.photo, photo)),
-                   [CommandHandler('skip', skip_photo)],
+            #PHOTO: [MessageHandler(Filters.photo, photo)),
+                   #[CommandHandler('skip', skip_photo)],
         },
 
         fallbacks=[CommandHandler('cancel', cancel)]
